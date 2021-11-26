@@ -10,10 +10,6 @@ package model;
  * @author CHIEN
  */
 public class KhuVuc {
-//    
-//	MaKhuVuc int identity,
-//	TenKhuVuc nvarchar(100) not null,
-//	TrangThai bit not null,
 
     private int MaKhuVuc;
     private String TenKhuVuc;
@@ -28,7 +24,7 @@ public class KhuVuc {
         this.TenKhuVuc = TenKhuVuc;
         this.TrangThai = TrangThai;
     }
-    //
+    
 
     public int getMaKhuVuc() {
         return MaKhuVuc;
