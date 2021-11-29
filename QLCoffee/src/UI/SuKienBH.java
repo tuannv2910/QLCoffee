@@ -80,7 +80,6 @@ public class SuKienBH extends javax.swing.JPanel {
         rdoKhongCoThoiHan = new javax.swing.JRadioButton();
         pnNgay = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        dateNgayKT = new com.toedter.calendar.JDateChooser();
         chkHuySK = new javax.swing.JCheckBox();
         btnXoaSK = new javax.swing.JButton();
         txtTenSK = new javax.swing.JTextField();
@@ -249,17 +248,13 @@ public class SuKienBH extends javax.swing.JPanel {
             pnNgayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnNgayLayout.createSequentialGroup()
                 .addComponent(jLabel10)
-                .addGap(18, 18, 18)
-                .addComponent(dateNgayKT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnNgayLayout.setVerticalGroup(
             pnNgayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnNgayLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnNgayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateNgayKT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
+                .addComponent(jLabel10)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -721,7 +716,6 @@ public class SuKienBH extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbxLoaiSK;
     private javax.swing.JCheckBox chkHuySK;
-    private com.toedter.calendar.JDateChooser dateNgayKT;
     private javax.swing.JLabel erroMaSK;
     private javax.swing.JLabel erroTenSK;
     private javax.swing.JButton jButton1;
