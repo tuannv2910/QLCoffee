@@ -55,9 +55,72 @@ public class ManHinhChinh extends javax.swing.JFrame {
 //        phanQuyen();
     }
 
-    //mở form quản lý tài khoản.
-   
-    
+    void OpenTaiKhoan() {
+        TaiKhoan tk = new TaiKhoan();
+        pnHome.removeAll();
+        pnHome.add(tk);
+        pnHome.validate();
+        pnHome.repaint();
+    }
+
+    //mở form bán hàng.
+    void OpenBanHang() {
+        BanHang bh = new BanHang();
+        pnHome.removeAll();
+        pnHome.add(bh);
+        pnHome.validate();
+        pnHome.repaint();
+    }
+
+    //mở form quản lý menu
+    void OpenQLMenu() {
+        QLMenu mn = new QLMenu();
+        pnHome.removeAll();
+        pnHome.add(mn);
+        pnHome.validate();
+        pnHome.repaint();
+    }
+
+    void OpenQLKhuVuc() {
+        QLKhuVuc kv = new QLKhuVuc();
+        pnHome.removeAll();
+        pnHome.add(kv);
+        pnHome.validate();
+        pnHome.repaint();
+    }
+
+    void OpenSuKien() {
+        SuKienBH sk = new SuKienBH();
+        pnHome.removeAll();
+        pnHome.add(sk);
+        pnHome.validate();
+        pnHome.repaint();
+    }
+
+    void OpenManHinhBatDau() {
+        ManHinhBatDau bd = new ManHinhBatDau();
+        pnHome.removeAll();
+        pnHome.add(bd);
+        pnHome.validate();
+        pnHome.repaint();
+    }
+
+    void OpenHoaDon() {
+        HoaDon hd = new HoaDon();
+        pnHome.removeAll();
+        pnHome.add(hd);
+        pnHome.validate();
+        pnHome.repaint();
+    }
+
+    void OpenThongKe() {
+        ThongKeUI tk = new ThongKeUI();
+        pnHome.removeAll();
+        pnHome.add(tk);
+        pnHome.validate();
+        pnHome.repaint();
+    }
+
     Timer t;
 
     public void dongHo() {
@@ -295,37 +358,36 @@ public class ManHinhChinh extends javax.swing.JFrame {
 
     private void mniQLKhuVucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLKhuVucActionPerformed
         // TODO add your handling code here:
-                
+        OpenQLKhuVuc();
     }//GEN-LAST:event_mniQLKhuVucActionPerformed
 
     private void mniQLMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLMenuActionPerformed
         // TODO add your handling code here:
-                
+        OpenQLMenu();
     }//GEN-LAST:event_mniQLMenuActionPerformed
 
     private void mniQLHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLHoaDonActionPerformed
         // TODO add your handling code here:
-                
+        OpenHoaDon();
     }//GEN-LAST:event_mniQLHoaDonActionPerformed
 
     private void mniQLThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLThongKeActionPerformed
         // TODO add your handling code here:
-               
+        OpenThongKe();
     }//GEN-LAST:event_mniQLThongKeActionPerformed
 
     private void mniSuKienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniSuKienActionPerformed
         // TODO add your handling code here:
-             
+        OpenSuKien();
     }//GEN-LAST:event_mniSuKienActionPerformed
 
     private void mniQLTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniQLTaiKhoanActionPerformed
         // TODO add your handling code here:
-        
+        OpenTaiKhoan();
     }//GEN-LAST:event_mniQLTaiKhoanActionPerformed
 
     private void mniChuyeTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniChuyeTaiKhoanActionPerformed
         // TODO add your handling code here:
-        
         OpenDangNhap();
     }//GEN-LAST:event_mniChuyeTaiKhoanActionPerformed
 
@@ -336,17 +398,17 @@ public class ManHinhChinh extends javax.swing.JFrame {
 
     private void mnTrangchuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnTrangchuMouseClicked
         // TODO add your handling code here:
-       
+        OpenManHinhBatDau();
     }//GEN-LAST:event_mnTrangchuMouseClicked
 
     private void mnTrangchuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnTrangchuActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_mnTrangchuActionPerformed
 
     private void mnBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnBanHangMouseClicked
         // TODO add your handling code here:
-                
+        OpenManHinhBatDau();
     }//GEN-LAST:event_mnBanHangMouseClicked
 
     private void mnBanHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnBanHangActionPerformed
