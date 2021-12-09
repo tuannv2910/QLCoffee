@@ -21,9 +21,9 @@ import javax.swing.JOptionPane;
 public class jdbcHelper {
 
     public static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    public static String dburl ="jdbc:sqlserver://34.146.147.39:1433;databaseName=QLCoffee";
-    public static String username = "tuannvph17655";
-    public static String password = "12345678";
+    public static String dburl = "jdbc:sqlserver://localhost:1433;databaseName=QLCoffee";
+    public static String username = "sa";
+    public static String password = "123";
 
     //nạp driver
     static {
