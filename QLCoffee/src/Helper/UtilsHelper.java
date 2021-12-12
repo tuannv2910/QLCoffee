@@ -18,9 +18,9 @@ public class UtilsHelper {
 
     public static synchronized Connection myConnection() {
         try {
-            String url = "jdbc:sqlserver://DESKTOP-73SP6T6\\SQLEXPRESS:1433;databaseName=" + "QLCoffee";
+            String url = "jdbc:sqlserver://localhost\\DESKTOP-8O064HD\\SQLEXPRESS:1433;databaseName=CF12";
             String user = "sa";
-            String pass = "123";
+            String pass = "maivantung";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             cnn = DriverManager.getConnection(url, user, pass);
             System.out.println("Kết nối thành công");

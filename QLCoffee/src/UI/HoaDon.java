@@ -9,6 +9,16 @@ import model.CTHoaDon;
 import DAO.CtHoaDonDao;
 import DAO.HoaDonDao;
 import Helper.ChuyenDoi;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -23,6 +33,7 @@ public class HoaDon extends javax.swing.JPanel {
     HoaDonDao hdd = new HoaDonDao();
     CtHoaDonDao cthd = new CtHoaDonDao();
     int index = 0;
+    String maHD;
 
     public HoaDon() {
         initComponents();
@@ -78,6 +89,7 @@ public class HoaDon extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         DateNgay = new com.toedter.calendar.JDateChooser();
+        btXuatHoaDon = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(1280, 640));
         setMinimumSize(new java.awt.Dimension(1280, 640));
@@ -223,6 +235,13 @@ public class HoaDon extends javax.swing.JPanel {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Chọn ngày:");
 
+        btXuatHoaDon.setText("Xuất Hóa Đơn");
+        btXuatHoaDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btXuatHoaDonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -238,7 +257,10 @@ public class HoaDon extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtTkMa, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DateNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(DateNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(81, 81, 81)
+                                .addComponent(btXuatHoaDon)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,13 +280,17 @@ public class HoaDon extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTkMa, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel8))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(DateNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btXuatHoaDon))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(12, 12, 12)
+                            .addComponent(jLabel8))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(DateNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -400,6 +426,11 @@ public class HoaDon extends javax.swing.JPanel {
         model.setRowCount(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void btXuatHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXuatHoaDonActionPerformed
+        // TODO add your handling code here:
+        xuatHoaDon(maHD);
+    }//GEN-LAST:event_btXuatHoaDonActionPerformed
+
     public void loadTable2() {
         DefaultTableModel model = (DefaultTableModel) tblCTHoaDon.getModel();
         model.setRowCount(0);
@@ -439,10 +470,74 @@ public class HoaDon extends javax.swing.JPanel {
         txtTongTien.setText(tblHoaDon.getValueAt(row, 3).toString());
         loadTxt();
         tblHoaDon.setRowSelectionInterval(index, index);
+        maHD=tblHoaDon.getValueAt(row, 1).toString();
     }
+    void xuatHoaDon(String name) {
+        try {
+            BaseFont bf = BaseFont.createFont("c:\\windows\\fonts\\times.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            //khởi tạo dc
+            Document dc = new Document();
+            //tạo font tiếng việt
+            Font header = new Font(bf, 40, Font.BOLD, BaseColor.BLUE);//header
+            Font headerTB = new Font(bf, 14, Font.BOLD, BaseColor.BLACK);//headertbale
+            Font tiny = new Font(bf, 10, Font.UNDERLINE, BaseColor.GRAY);
+            Font text = new Font(bf, 14, Font.NORMAL, BaseColor.BLACK);//normal text
+            Font textTB = new Font(bf, 12, Font.NORMAL, BaseColor.BLACK);//normal text table
+            System.out.println(name);
+            PdfWriter.getInstance(dc, new FileOutputStream("hoaDon/" + name + ".pdf"));
+            dc.open();
+            //nội dung
+            Paragraph[] p = new Paragraph[6];
+            p[0] = new Paragraph("Số 1 Bà Triệu", header);
+            p[0].setAlignment(Element.ALIGN_CENTER);
+            p[0].setSpacingBefore(12);
+            p[1] = new Paragraph("HOÁ ĐƠN BÁN HÀNG", tiny);
+            p[1].setAlignment(Element.ALIGN_CENTER);
+            p[1].setSpacingBefore(5);
+            p[2] = new Paragraph("Ngày Mua: " + txtNgayMua.getText(), text);
+            p[2].setAlignment(Element.ALIGN_LEFT);
+            p[3] = new Paragraph("Tổng tiền: " + txtTongTien.getText(), text);
+            p[3].setAlignment(Element.ALIGN_LEFT);
+            //p[4] = new Paragraph("Ngày mua hàng: " + ChuyenDoi.chuyenDoiNgay(name).toString(new Date(), "dd/MM/yyyy"), text);
+           // p[4].setAlignment(Element.ALIGN_LEFT);
+            p[4] = new Paragraph("Tên nhân viên: " + txtTenTK.getText(), text);
+            p[4].setAlignment(Element.ALIGN_LEFT);
+            p[5] = new Paragraph("Danh sách sản phẩm: ", text);
+            p[5].setAlignment(Element.ALIGN_LEFT);
+            p[5].setSpacingAfter(20);
+            //add nội dung
+            for (int i = 0; i < 6; i++) {
+                dc.add(p[i]);
+            }
+            //table
+            //Khởi tạo một table có 3 cột
+            PdfPTable table = new PdfPTable(5);
+            //Khởi tạo ô header và thêm vào table
+            String h[] = {"STT", "Tên", "Số lượng", "Đơn giá", "Thành tiền"};
+            PdfPCell title[] = new PdfPCell[5];
+            for (int i = 0; i < 5; i++) {
+                title[i] = new PdfPCell(new Paragraph(h[i], headerTB));
+                title[i].setPaddingLeft(2.0f);
+                table.addCell(title[i]);
+            }
+            //Khởi tạo  ô data và thêm vào bảng
+            for (int i = 0; i < tblCTHoaDon.getRowCount(); i++) {
+                for (int j = 0; j < 5; j++) {
+                    PdfPCell data = new PdfPCell(new Paragraph(tblCTHoaDon.getValueAt(i, j) + "", textTB));
+                    table.addCell(data);
+                }
+            }
+            dc.add(table);
+            dc.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser DateNgay;
+    private javax.swing.JButton btXuatHoaDon;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
