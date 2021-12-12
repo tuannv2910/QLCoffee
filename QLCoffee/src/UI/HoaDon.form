@@ -320,8 +320,12 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtTkMa" min="-2" pref="219" max="-2" attributes="0"/>
-                                      <Component id="DateNgay" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtTkMa" alignment="0" min="-2" pref="219" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="DateNgay" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                                          <Component id="btXuatHoaDon" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
@@ -349,14 +353,20 @@
                               <Component id="txtTkMa" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btXuatHoaDon" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="DateNgay" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="DateNgay" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -502,6 +512,14 @@
                   </Properties>
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="DateNgay">
+                </Component>
+                <Component class="javax.swing.JButton" name="btXuatHoaDon">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t H&#xf3;a &#x110;&#x1a1;n"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btXuatHoaDonActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
